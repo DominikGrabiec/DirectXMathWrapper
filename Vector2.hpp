@@ -4,35 +4,35 @@
 
 namespace Math
 {
-	class Vector2 : public XMFLOAT2
+	class Vector2 : public DirectX::XMFLOAT2
 	{
 	public:
 		//--------------------------------------------------------------------------
 		// Constructors
 		//
 
-		Vector2() : XMFLOAT2()
+		Vector2() : DirectX::XMFLOAT2()
 		{
 		}
 
-		Vector2(float x, float y) : XMFLOAT2(x, y)
+		Vector2(float x, float y) : DirectX::XMFLOAT2(x, y)
 		{
 		}
 
-		explicit Vector2(const float* v) : XMFLOAT2(v)
+		explicit Vector2(const float* v) : DirectX::XMFLOAT2(v)
 		{
 		}
 
-		explicit Vector2(FXMVECTOR v)
+		explicit Vector2(DirectX::FXMVECTOR v)
 		{
-			XMStoreFloat2(this, v);
+			DirectX::XMStoreFloat2(this, v);
 		}
 
-		Vector2(const Vector2& v) : XMFLOAT2(v)
+		Vector2(const Vector2& v) : DirectX::XMFLOAT2(v)
 		{
 		}
 
-		Vector2(int ix, int iy) : XMFLOAT2(static_cast<float>(ix), static_cast<float>(iy))
+		Vector2(int ix, int iy) : DirectX::XMFLOAT2(static_cast<float>(ix), static_cast<float>(iy))
 		{
 		}
 
@@ -40,9 +40,9 @@ namespace Math
 		// Assignment
 		//
 
-		Vector2& operator = (FXMVECTOR v)
+		Vector2& operator = (DirectX::FXMVECTOR v)
 		{
-			XMStoreFloat2(this, v);
+			DirectX::XMStoreFloat2(this, v);
 			return *this;
 		}
 
@@ -57,9 +57,9 @@ namespace Math
 		// Conversion
 		//
 
-		operator XMVECTOR () const
+		operator DirectX::XMVECTOR () const
 		{
-			return XMLoadFloat2(this);
+			return DirectX::XMLoadFloat2(this);
 		}
 
 		//--------------------------------------------------------------------------

@@ -9,27 +9,27 @@ namespace Math
 
 	void Vector2::normalise()
 	{
-		*this = XMVector2Normalize(*this);
+		*this = DirectX::XMVector2Normalize(*this);
 	}
 
 	Vector2 Vector2::normalise() const
 	{
-		return Vector2(XMVector2Normalize(*this));
+		return Vector2(DirectX::XMVector2Normalize(*this));
 	}
 
 	Vector2 Vector2::lerp(const Vector2& a, const Vector2& b, float t)
 	{
-		return Vector2(XMVectorLerp(a, b, t));
+		return Vector2(DirectX::XMVectorLerp(a, b, t));
 	}
 
 	Vector2 Vector2::minimise(const Vector2& a, const Vector2& b)
 	{
-		return Vector2(XMVectorMin(a, b));
+		return Vector2(DirectX::XMVectorMin(a, b));
 	}
 
 	Vector2 Vector2::maximise(const Vector2& a, const Vector2& b)
 	{
-		return Vector2(XMVectorMax(a, b));
+		return Vector2(DirectX::XMVectorMax(a, b));
 	}
 
 } // namespace Math

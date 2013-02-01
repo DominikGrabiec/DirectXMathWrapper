@@ -5,7 +5,7 @@
 
 #include "Types.hpp"
 
-#include <xnamath.h>
+#include <DirectXMath.h>
 
 #include <cfloat>
 #include <cmath>

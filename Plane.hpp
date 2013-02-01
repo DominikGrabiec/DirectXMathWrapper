@@ -7,44 +7,44 @@
 
 namespace Math
 {
-	class Plane : public XMFLOAT4A
+	class Plane : public DirectX::XMFLOAT4A
 	{
 	public:
 		//--------------------------------------------------------------------------
 		// Constructors
 		//
 
-		Plane() : XMFLOAT4A()
+		Plane() : DirectX::XMFLOAT4A()
 		{
 		}
 
 		Plane(float x, float y, float z, float w)
 		{ 
-			XMStoreFloat4A(this, XMPlaneNormalize(XMVectorSet(x, y, z, w)));
+			DirectX::XMStoreFloat4A(this, DirectX::XMPlaneNormalize(DirectX::XMVectorSet(x, y, z, w)));
 		}
 
 		Plane(const Vector3& point, const Vector3& normal)
 		{
 			// ASSUME normal is normalised
-			XMStoreFloat4A(this, XMPlaneFromPointNormal(point, normal));
+			DirectX::XMStoreFloat4A(this, DirectX::XMPlaneFromPointNormal(point, normal));
 		}
 
 		Plane(const Vector3& a, const Vector3& b, const Vector3& c)
 		{
-			XMStoreFloat4A(this, XMPlaneFromPoints(a, b, c));
+			DirectX::XMStoreFloat4A(this, DirectX::XMPlaneFromPoints(a, b, c));
 		}
 
 		explicit Plane(const float* v)
 		{ 
-			XMStoreFloat4A(this, XMPlaneNormalize(XMVectorSet(v[0], v[1], v[2], v[3])));
+			DirectX::XMStoreFloat4A(this, DirectX::XMPlaneNormalize(DirectX::XMVectorSet(v[0], v[1], v[2], v[3])));
 		}
 
-		explicit Plane(FXMVECTOR v)
+		explicit Plane(DirectX::FXMVECTOR v)
 		{
-			XMStoreFloat4A(this, XMPlaneNormalize(v));
+			DirectX::XMStoreFloat4A(this, DirectX::XMPlaneNormalize(v));
 		}
 
-		Plane(const Plane& p) : XMFLOAT4A(p)
+		Plane(const Plane& p) : DirectX::XMFLOAT4A(p)
 		{
 		}
 
@@ -52,9 +52,9 @@ namespace Math
 		// Assignment
 		//
 
-		Plane& operator = (FXMVECTOR v)
+		Plane& operator = (DirectX::FXMVECTOR v)
 		{
-			XMStoreFloat4A(this, XMPlaneNormalize(v));
+			DirectX::XMStoreFloat4A(this, DirectX::XMPlaneNormalize(v));
 			return *this;
 		}
 
@@ -71,9 +71,9 @@ namespace Math
 		// Conversion
 		//
 
-		operator XMVECTOR () const
+		operator DirectX::XMVECTOR () const
 		{
-			return XMLoadFloat4A(this);
+			return DirectX::XMLoadFloat4A(this);
 		}
 
 		//--------------------------------------------------------------------------

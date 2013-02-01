@@ -9,7 +9,7 @@ namespace Math
 
 	Vector3 Quaternion::transform(const Vector3& vector) const
 	{
-		XMVECTOR self = *this;
-		return Vector3(XMQuaternionMultiply(XMQuaternionMultiply(self, vector), XMQuaternionConjugate(self)));
+		DirectX::XMVECTOR self = *this;
+		return Vector3(DirectX::XMQuaternionMultiply(DirectX::XMQuaternionMultiply(self, vector), DirectX::XMQuaternionConjugate(self)));
 	}
 }

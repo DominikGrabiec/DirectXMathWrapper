@@ -11,47 +11,47 @@ namespace Math
 
 	float Vector3::length() const
 	{
-		return XMVectorGetX(XMVector3Length(*this));
+		return DirectX::XMVectorGetX(DirectX::XMVector3Length(*this));
 	}
 
 	float Vector3::length_squared() const
 	{
-		return XMVectorGetX(XMVector3LengthSq(*this));
+		return DirectX::XMVectorGetX(DirectX::XMVector3LengthSq(*this));
 	}
 
 	void Vector3::normalise()
 	{
-		*this = XMVector3Normalize(*this);
+		*this = DirectX::XMVector3Normalize(*this);
 	}
 
 	Vector3 Vector3::normalise() const
 	{
-		return Vector3(XMVector3Normalize(*this));
+		return Vector3(DirectX::XMVector3Normalize(*this));
 	}
 
 	float Vector3::dot(const Vector3& v) const
 	{
-		return XMVectorGetX(XMVector3Dot(*this, v));
+		return DirectX::XMVectorGetX(DirectX::XMVector3Dot(*this, v));
 	}
 
 	Vector3 Vector3::cross(const Vector3& v) const
 	{
-		return Vector3(XMVector3Cross(*this, v));
+		return Vector3(DirectX::XMVector3Cross(*this, v));
 	}
 
 	Vector3 Vector3::lerp(const Vector3& a, const Vector3& b, float t)
 	{
-		return Vector3(XMVectorLerp(a, b, t));
+		return Vector3(DirectX::XMVectorLerp(a, b, t));
 	}
 
 	Vector3 Vector3::minimise(const Vector3& a, const Vector3& b)
 	{
-		return Vector3(XMVectorMin(a, b));
+		return Vector3(DirectX::XMVectorMin(a, b));
 	}
 
 	Vector3 Vector3::maximise(const Vector3& a, const Vector3& b)
 	{
-		return Vector3(XMVectorMax(a, b));
+		return Vector3(DirectX::XMVectorMax(a, b));
 	}
 
 } // namespace Math

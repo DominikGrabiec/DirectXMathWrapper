@@ -25,10 +25,10 @@
     <ClInclude Include="Precompiled.hpp" />
     <ClInclude Include="Quaternion.hpp" />
     <ClInclude Include="Ray.hpp" />
+    <ClInclude Include="Types.hpp" />
     <ClInclude Include="Vector2.hpp" />
     <ClInclude Include="Vector3.hpp" />
     <ClInclude Include="Vector4.hpp" />
-    <ClInclude Include="Types.hpp" />
     <ClInclude Include="Windows.hpp" />
   </ItemGroup>
   <ItemGroup>

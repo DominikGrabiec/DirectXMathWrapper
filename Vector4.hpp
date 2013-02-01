@@ -4,31 +4,31 @@
 
 namespace Math
 {
-	class Vector4 : public XMFLOAT4A
+	class Vector4 : public DirectX::XMFLOAT4A
 	{
 	public:
 		//--------------------------------------------------------------------------
 		// Constructors
 		//
 
-		Vector4() : XMFLOAT4A()
+		Vector4() : DirectX::XMFLOAT4A()
 		{
 		}
 
-		Vector4(float x, float y, float z, float w) : XMFLOAT4A(x, y, z, w)
+		Vector4(float x, float y, float z, float w) : DirectX::XMFLOAT4A(x, y, z, w)
 		{
 		}
 
-		explicit Vector4(const float* v) : XMFLOAT4A(v)
+		explicit Vector4(const float* v) : DirectX::XMFLOAT4A(v)
 		{
 		}
 
-		explicit Vector4(FXMVECTOR v)
+		explicit Vector4(DirectX::FXMVECTOR v)
 		{
-			XMStoreFloat4A(this, v);
+			DirectX::XMStoreFloat4A(this, v);
 		}
 
-		Vector4(const Vector4& v) : XMFLOAT4A(v)
+		Vector4(const Vector4& v) : DirectX::XMFLOAT4A(v)
 		{
 		}
 
@@ -36,9 +36,9 @@ namespace Math
 		// Assignment
 		//
 
-		Vector4& operator = (FXMVECTOR v)
+		Vector4& operator = (DirectX::FXMVECTOR v)
 		{
-			XMStoreFloat4A(this, v);
+			DirectX::XMStoreFloat4A(this, v);
 			return *this;
 		}
 
@@ -55,9 +55,9 @@ namespace Math
 		// Conversion
 		//
 
-		operator XMVECTOR () const
+		operator DirectX::XMVECTOR () const
 		{
-			return XMLoadFloat4A(this);
+			return DirectX::XMLoadFloat4A(this);
 		}
 
 		//--------------------------------------------------------------------------
@@ -116,22 +116,22 @@ namespace Math
 
 		Vector4 operator + (const Vector4& v) const
 		{
-			return Vector4(XMVectorAdd(*this, v));
+			return Vector4(DirectX::XMVectorAdd(*this, v));
 		}
 
 		Vector4 operator - (const Vector4& v) const
 		{
-			return Vector4(XMVectorSubtract(*this, v));
+			return Vector4(DirectX::XMVectorSubtract(*this, v));
 		}
 
 		Vector4 operator * (const Vector4& v) const
 		{
-			return Vector4(XMVectorMultiply(*this, v));
+			return Vector4(DirectX::XMVectorMultiply(*this, v));
 		}
 
 		Vector4 operator / (const Vector4& v) const
 		{
-			return Vector4(XMVectorDivide(*this, v));
+			return Vector4(DirectX::XMVectorDivide(*this, v));
 		}
 
 		Vector4 operator - () const
@@ -141,47 +141,47 @@ namespace Math
 
 		Vector4 operator * (const float n) const
 		{
-			return Vector4(XMVectorMultiply(*this, XMVectorReplicate(n)));
+			return Vector4(DirectX::XMVectorMultiply(*this, DirectX::XMVectorReplicate(n)));
 		}
 
 		friend Vector4 operator * (const float n, const Vector4& v)
 		{
-			return Vector4(XMVectorMultiply(XMVectorReplicate(n), v));
+			return Vector4(DirectX::XMVectorMultiply(DirectX::XMVectorReplicate(n), v));
 		}
 
 		Vector4 operator / (const float n) const
 		{
-			return Vector4(XMVectorDivide(*this, XMVectorReplicate(n)));
+			return Vector4(DirectX::XMVectorDivide(*this, DirectX::XMVectorReplicate(n)));
 		}
 
 		Vector4& operator += (const Vector4& v)
 		{
-			return *this = XMVectorAdd(*this, v);
+			return *this = DirectX::XMVectorAdd(*this, v);
 		}
 
 		Vector4& operator -= (const Vector4& v)
 		{
-			return *this = XMVectorSubtract(*this, v);
+			return *this = DirectX::XMVectorSubtract(*this, v);
 		}
 
 		Vector4& operator *= (const Vector4& v)
 		{
-			return *this = XMVectorMultiply(*this, v);
+			return *this = DirectX::XMVectorMultiply(*this, v);
 		}
 
 		Vector4& operator /= (const Vector4& v)
 		{
-			return *this = XMVectorDivide(*this, v);
+			return *this = DirectX::XMVectorDivide(*this, v);
 		}
 
 		Vector4& operator *= (const float n)
 		{
-			return *this = XMVectorMultiply(*this, XMVectorReplicate(n));
+			return *this = DirectX::XMVectorMultiply(*this, DirectX::XMVectorReplicate(n));
 		}
 
 		Vector4& operator /= (const float n)
 		{
-			return *this = XMVectorDivide(*this, XMVectorReplicate(n));
+			return *this = DirectX::XMVectorDivide(*this, DirectX::XMVectorReplicate(n));
 		}
 
 		//--------------------------------------------------------------------------

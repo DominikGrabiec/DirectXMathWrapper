@@ -8,7 +8,7 @@
 namespace Math
 {
 
-	class Quaternion : public XMFLOAT4A
+	class Quaternion : public DirectX::XMFLOAT4A
 	{
 	public:
 		//--------------------------------------------------------------------------
@@ -17,33 +17,33 @@ namespace Math
 
 		Quaternion()
 		{
-			XMStoreFloat4A(this, XMQuaternionIdentity());
+			DirectX::XMStoreFloat4A(this, DirectX::XMQuaternionIdentity());
 		}
 
-		Quaternion(float x, float y, float z, float w) : XMFLOAT4A(z, y, z, w) 
+		Quaternion(float x, float y, float z, float w) : DirectX::XMFLOAT4A(z, y, z, w) 
 		{
 		}
 
 		Quaternion(float yaw, float pitch, float roll)
 		{
-			XMStoreFloat4A(this, XMQuaternionRotationRollPitchYaw(pitch, yaw, roll));
+			DirectX::XMStoreFloat4A(this, DirectX::XMQuaternionRotationRollPitchYaw(pitch, yaw, roll));
 		}
 
 		Quaternion(const Vector3& axis, float angle)
 		{
-			XMStoreFloat4A(this, XMQuaternionRotationAxis(axis, angle));
+			DirectX::XMStoreFloat4A(this, DirectX::XMQuaternionRotationAxis(axis, angle));
 		}
 
-		explicit Quaternion(const float* values) : XMFLOAT4A(values) 
+		explicit Quaternion(const float* values) : DirectX::XMFLOAT4A(values) 
 		{
 		}
 
-		explicit Quaternion(FXMVECTOR v) 
+		explicit Quaternion(DirectX::FXMVECTOR v) 
 		{
-			XMStoreFloat4A(this, v);
+			DirectX::XMStoreFloat4A(this, v);
 		}
 
-		Quaternion(const Quaternion& q) : XMFLOAT4A(q) 
+		Quaternion(const Quaternion& q) : DirectX::XMFLOAT4A(q) 
 		{
 		}
 
@@ -51,9 +51,9 @@ namespace Math
 		// Assignment
 		//
 
-		Quaternion& operator = (FXMVECTOR v)
+		Quaternion& operator = (DirectX::FXMVECTOR v)
 		{
-			XMStoreFloat4A(this, v);
+			DirectX::XMStoreFloat4A(this, v);
 			return *this;
 		}
 
@@ -70,9 +70,9 @@ namespace Math
 		// Conversion
 		//
 
-		operator XMVECTOR () const
+		operator DirectX::XMVECTOR () const
 		{
-			return XMLoadFloat4A(this);
+			return DirectX::XMLoadFloat4A(this);
 		}
 
 		//--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ namespace Math
 
 		bool is_identity() const
 		{
-			return XMQuaternionIsIdentity(*this) == TRUE;
+			return DirectX::XMQuaternionIsIdentity(*this);
 		}
 
 		//--------------------------------------------------------------------------
@@ -104,59 +104,59 @@ namespace Math
 
 		void from_axis_angle(const Vector3& axis, float angle)
 		{
-			XMStoreFloat4A(this, XMQuaternionRotationAxis(axis, angle));
+			DirectX::XMStoreFloat4A(this, DirectX::XMQuaternionRotationAxis(axis, angle));
 		}
 
 		void to_axis_angle(Vector3& axis, float& angle) const
 		{
-			XMVECTOR a;
-			XMQuaternionToAxisAngle(&a, &angle, *this);
+			DirectX::XMVECTOR a;
+			DirectX::XMQuaternionToAxisAngle(&a, &angle, *this);
 			axis = a;
 		}
 
 		float dot(const Quaternion& q) const
 		{
-			return XMVectorGetX(XMQuaternionDot(*this, q));
+			return DirectX::XMVectorGetX(DirectX::XMQuaternionDot(*this, q));
 		}
 
 		float length() const
 		{
-			return XMVectorGetX(XMQuaternionLength(*this));
+			return DirectX::XMVectorGetX(DirectX::XMQuaternionLength(*this));
 		}
 
 		float length_squared() const
 		{
-			return XMVectorGetX(XMQuaternionLengthSq(*this));
+			return DirectX::XMVectorGetX(DirectX::XMQuaternionLengthSq(*this));
 		}
 
 		void normalise()
 		{
-			XMStoreFloat4A(this, XMQuaternionNormalize(*this));
+			DirectX::XMStoreFloat4A(this, DirectX::XMQuaternionNormalize(*this));
 		}
 
 		Quaternion conjugate() const
 		{
-			return Quaternion(XMQuaternionConjugate(*this));
+			return Quaternion(DirectX::XMQuaternionConjugate(*this));
 		}
 
 		Quaternion inverse() const
 		{
-			return Quaternion(XMQuaternionInverse(*this));
+			return Quaternion(DirectX::XMQuaternionInverse(*this));
 		}
 
 		Quaternion exp() const
 		{
-			return Quaternion(XMQuaternionExp(*this));
+			return Quaternion(DirectX::XMQuaternionExp(*this));
 		}
 
 		Quaternion ln() const
 		{
-			return Quaternion(XMQuaternionLn(*this));
+			return Quaternion(DirectX::XMQuaternionLn(*this));
 		}
 
 		Quaternion slerp(const Quaternion& q, float t) const
 		{
-			return Quaternion(XMQuaternionSlerp(*this, q, t));
+			return Quaternion(DirectX::XMQuaternionSlerp(*this, q, t));
 		}
 
 		Vector3 transform(const Vector3& v) const;

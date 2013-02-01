@@ -10,21 +10,21 @@ namespace Math
 
 	float Plane::dot(const Vector3& v) const
 	{
-		return XMVectorGetX(XMPlaneDotCoord(*this, v));
+		return DirectX::XMVectorGetX(DirectX::XMPlaneDotCoord(*this, v));
 	}
 
 	float Plane::dot(const Vector4& v) const
 	{
-		return XMVectorGetX(XMPlaneDot(*this, v));
+		return DirectX::XMVectorGetX(DirectX::XMPlaneDot(*this, v));
 	}
 
 	float Plane::dot_normal(const Vector3& v) const
 	{
-		return XMVectorGetX(XMPlaneDotNormal(*this, v));
+		return DirectX::XMVectorGetX(DirectX::XMPlaneDotNormal(*this, v));
 	}
 
 	float Plane::distance(const Vector3& v) const
 	{
-		return XMVectorGetX(XMPlaneDotCoord(*this, v));
+		return DirectX::XMVectorGetX(DirectX::XMPlaneDotCoord(*this, v));
 	}
 }
