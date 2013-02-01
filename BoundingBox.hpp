@@ -31,8 +31,8 @@ namespace Math
 		typedef std::array<Vector3, 8> CornerArray;
 
 	private:
-		Vector3 mMinimum;
-		Vector3 mMaximum;
+		Vector3 minimum_;
+		Vector3 maximum_;
 
 	public:
 		//--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ namespace Math
 
 		BoundingBox(const Vector3& minimum, const Vector3& maximum);
 
-		BoundingBox(const BoundingBox& box) : mMinimum(box.mMinimum), mMaximum(box.mMaximum)
+		BoundingBox(const BoundingBox& box) : minimum_(box.minimum_), maximum_(box.maximum_)
 		{
 		}
 
@@ -53,8 +53,8 @@ namespace Math
 
 		BoundingBox& operator = (const BoundingBox& box)
 		{
-			mMinimum = box.mMinimum;
-			mMaximum = box.mMaximum;
+			minimum_ = box.minimum_;
+			maximum_ = box.maximum_;
 			return *this;
 		}
 
@@ -64,19 +64,19 @@ namespace Math
 
 		bool operator == (const BoundingBox& box) const
 		{
-			return mMinimum == box.mMinimum && mMaximum == box.mMaximum;
+			return minimum_ == box.minimum_ && maximum_ == box.maximum_;
 		}
 
 		bool operator != (const BoundingBox& box) const
 		{
-			return mMinimum != box.mMinimum || mMaximum != box.mMaximum;
+			return minimum_ != box.minimum_ || maximum_ != box.maximum_;
 		}
 
 		bool contains(const Vector3& point) const;
 
 		bool is_empty() const
 		{
-			return mMinimum == mMaximum;
+			return minimum_ == maximum_;
 		}
 
 		//--------------------------------------------------------------------------
@@ -87,12 +87,12 @@ namespace Math
 
 		const Vector3& minimum_corner() const
 		{
-			return mMinimum;
+			return minimum_;
 		}
 
 		const Vector3& maximum_corner() const
 		{
-			return mMaximum;
+			return maximum_;
 		}
 
 		Vector3 get_corner(BoxCorner corner) const;

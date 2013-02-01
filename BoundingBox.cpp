@@ -20,30 +20,30 @@ namespace Math
 	}
 
 	BoundingBox::BoundingBox(const Vector3& minimum, const Vector3& maximum) :
-		mMinimum(Vector3::minimise(minimum, maximum)),
-		mMaximum(Vector3::maximise(minimum, maximum))
+		minimum_(Vector3::minimise(minimum, maximum)),
+		maximum_(Vector3::maximise(minimum, maximum))
 	{
 	}
 
 	bool BoundingBox::contains(const Vector3& point) const
 	{
 		return
-			(mMinimum.x <= point.x && point.x <= mMaximum.x) && 
-			(mMinimum.y <= point.y && point.y <= mMaximum.y) &&
-			(mMinimum.z <= point.z && point.z <= mMaximum.z);
+			(minimum_.x <= point.x && point.x <= maximum_.x) && 
+			(minimum_.y <= point.y && point.y <= maximum_.y) &&
+			(minimum_.z <= point.z && point.z <= maximum_.z);
 	}
 
 	void BoundingBox::set(const Vector3& minimum, const Vector3& maximum)
 	{
-		mMinimum = Vector3::minimise(minimum, maximum);
-		mMaximum = Vector3::maximise(minimum, maximum);
+		minimum_ = Vector3::minimise(minimum, maximum);
+		maximum_ = Vector3::maximise(minimum, maximum);
 	}
 
 	Vector3 BoundingBox::get_corner(BoxCorner corner) const
 	{
-		const float x = (corner & 1) ? mMaximum.x : mMinimum.x;
-		const float y = (corner & 2) ? mMaximum.y : mMinimum.y;
-		const float z = (corner & 4) ? mMaximum.z : mMinimum.z;
+		const float x = (corner & 1) ? maximum_.x : minimum_.x;
+		const float y = (corner & 2) ? maximum_.y : minimum_.y;
+		const float z = (corner & 4) ? maximum_.z : minimum_.z;
 		return Vector3(x, y, z);
 	}
 

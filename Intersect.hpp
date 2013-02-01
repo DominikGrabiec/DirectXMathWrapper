@@ -16,41 +16,41 @@ namespace Math
 		class LinearResult
 		{
 		private:
-			float mDistance;
-			bool mIntersect;
+			float distance_;
+			bool intersect_;
 
 		public:
-			LinearResult() : mDistance(0.0f), mIntersect(false)
+			LinearResult() : distance_(0.0f), intersect_(false)
 			{
 			}
 
-			explicit LinearResult(float distance) : mDistance(distance), mIntersect(true)
+			explicit LinearResult(float distance) : distance_(distance), intersect_(true)
 			{
 			}
 
-			LinearResult(bool intersect, float distance) : mDistance(distance), mIntersect(intersect)
+			LinearResult(bool intersect, float distance) : distance_(distance), intersect_(intersect)
 			{
 			}
 
-			LinearResult(const LinearResult& result) : mDistance(result.mDistance), mIntersect(result.mIntersect)
+			LinearResult(const LinearResult& result) : distance_(result.distance_), intersect_(result.intersect_)
 			{
 			}
 
 			LinearResult& operator = (const LinearResult& result)
 			{
-				mDistance = result.mDistance;
-				mIntersect = result.mIntersect;
+				distance_ = result.distance_;
+				intersect_ = result.intersect_;
 				return *this;
 			}
 
 			bool intersects() const
 			{
-				return mIntersect;
+				return intersect_;
 			}
 
 			float distance() const
 			{
-				return mDistance;
+				return distance_;
 			}
 		};
 

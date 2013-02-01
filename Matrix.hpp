@@ -143,7 +143,7 @@ namespace Math
 
 		bool is_identity() const
 		{
-			return DirectX::XMMatrixIsIdentity(*this) == TRUE;
+			return DirectX::XMMatrixIsIdentity(*this);
 		}
 
 		//--------------------------------------------------------------------------

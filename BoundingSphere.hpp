@@ -16,23 +16,23 @@ namespace Math
 	class BoundingSphere
 	{
 	private:
-		Vector3 mCenter;
-		float mRadius;
+		Vector3 center_;
+		float radius_;
 
 	public:
 		//--------------------------------------------------------------------------
 		// Constructors
 		//
 
-		BoundingSphere() : mRadius(0.0f)
+		BoundingSphere() : radius_(0.0f)
 		{
 		}
 
-		BoundingSphere(const Vector3& center, float radius) : mCenter(center), mRadius(std::abs(radius))
+		BoundingSphere(const Vector3& center, float radius) : center_(center), radius_(std::abs(radius))
 		{
 		}
 
-		BoundingSphere(const BoundingSphere& sphere) : mCenter(sphere.mCenter), mRadius(sphere.mRadius)
+		BoundingSphere(const BoundingSphere& sphere) : center_(sphere.center_), radius_(sphere.radius_)
 		{
 		}
 
@@ -42,8 +42,8 @@ namespace Math
 
 		BoundingSphere& operator = (const BoundingSphere& sphere)
 		{
-			mCenter = sphere.mCenter;
-			mRadius = sphere.mRadius;
+			center_ = sphere.center_;
+			radius_ = sphere.radius_;
 			return *this;
 		}
 
@@ -53,22 +53,22 @@ namespace Math
 
 		bool operator == (const BoundingSphere& sphere) const
 		{
-			return mCenter == sphere.mCenter && mRadius == sphere.mRadius;
+			return center_ == sphere.center_ && radius_ == sphere.radius_;
 		}
 
 		bool operator != (const BoundingSphere& sphere) const
 		{
-			return mCenter != sphere.mCenter || mRadius != sphere.mRadius;
+			return center_ != sphere.center_ || radius_ != sphere.radius_;
 		}
 
 		bool contains(const Vector3& point) const
 		{
-			return Vector3(mCenter - point).length_squared() <= mRadius * mRadius;
+			return Vector3(center_ - point).length_squared() <= radius_ * radius_;
 		}
 
 		bool is_empty()
 		{
-			return mRadius <= FLT_EPSILON;
+			return radius_ <= FLT_EPSILON;
 		}
 
 		//--------------------------------------------------------------------------
@@ -77,28 +77,28 @@ namespace Math
 
 		void set(const Vector3& center, float radius)
 		{
-			mCenter = center;
-			mRadius = std::abs(radius);
+			center_ = center;
+			radius_ = std::abs(radius);
 		}
 
 		void center(const Vector3& center)
 		{
-			mCenter = center;
+			center_ = center;
 		}
 
 		const Vector3& center() const
 		{
-			return mCenter;
+			return center_;
 		}
 
 		void radius(float radius)
 		{
-			mRadius = std::abs(radius);
+			radius_ = std::abs(radius);
 		}
 
 		float radius() const
 		{
-			return mRadius;
+			return radius_;
 		}
 
 		static BoundingSphere compute_containing_sphere(const BoundingSphere& a, const BoundingSphere& b);

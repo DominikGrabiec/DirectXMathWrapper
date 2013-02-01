@@ -11,83 +11,83 @@ namespace Math
 	{
 	private:
 		// The values are private because we want to keep the direction vector normalised
-		Vector3 mOrigin;
-		Vector3 mDirection;
+		Vector3 origin_;
+		Vector3 direction_;
 
 	public:
-		Ray() :	mDirection(Vector3::UNIT_Z)
+		Ray() :	direction_(Vector3::UNIT_Z)
 		{
 		}
 
 		Ray(const Vector3& origin, const Vector3& direction) : 
-			mOrigin(origin),
-			mDirection(direction)
+			origin_(origin),
+			direction_(direction)
 		{
-			mDirection.normalise();
+			direction_.normalise();
 		}
 
 		Ray(const Ray& ray) :
-			mOrigin(ray.mOrigin),
-			mDirection(ray.mDirection)
+			origin_(ray.origin_),
+			direction_(ray.direction_)
 		{
 		}
 
 		
 		Ray& operator = (const Ray& ray)
 		{
-			mOrigin = ray.mOrigin;
-			mDirection = ray.mDirection;
+			origin_ = ray.origin_;
+			direction_ = ray.direction_;
 			return *this;
 		}
 
 
 		bool operator == (const Ray& ray) const
 		{
-			return mOrigin == ray.mOrigin && mDirection == ray.mDirection;
+			return origin_ == ray.origin_ && direction_ == ray.direction_;
 		}
 
 		bool operator != (const Ray& ray) const
 		{
-			return mOrigin != ray.mOrigin || mDirection != ray.mDirection;
+			return origin_ != ray.origin_ || direction_ != ray.direction_;
 		}
 
 
 		Vector3 point_at(float t) const
 		{
-			return mOrigin + mDirection * t;
+			return origin_ + direction_ * t;
 		}
 
 		Vector3 operator * (float t) const
 		{
-			return mOrigin + mDirection * t;
+			return origin_ + direction_ * t;
 		}
 
 		friend Vector3 operator * (float t, const Ray& ray)
 		{
-			return ray.mOrigin + ray.mDirection * t;
+			return ray.origin_ + ray.direction_ * t;
 		}
 
 
 		void origin(const Vector3& o)
 		{
-			mOrigin = o;
+			origin_ = o;
 		}
 
 		const Vector3& origin() const
 		{
-			return mOrigin;
+			return origin_;
 		}
 
 
 		void direction(const Vector3& d)
 		{
-			mDirection = d;
-			mDirection.normalise();
+			direction_ = d;
+			direction_.normalise();
 		}
 
 		const Vector3& direction() const
 		{
-			return mDirection;
+			return direction_;
 		}
 	};
 

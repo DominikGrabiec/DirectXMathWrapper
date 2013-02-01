@@ -16,17 +16,17 @@ namespace Math
 		const Vector4 m3 = matrix.column(2);
 		const Vector4 m4 = matrix.column(3);
 
-		mPlanes[FRUSTUM_PLANE_NEAR] = Plane(m3);
-		mPlanes[FRUSTUM_PLANE_FAR] = Plane(m4 - m3);
-		mPlanes[FRUSTUM_PLANE_LEFT] = Plane(m4 + m1);
-		mPlanes[FRUSTUM_PLANE_TOP] = Plane(m4 - m2);
-		mPlanes[FRUSTUM_PLANE_RIGHT] = Plane(m4 - m1);
-		mPlanes[FRUSTUM_PLANE_BOTTOM] = Plane(m4 + m2);
+		planes_[FRUSTUM_PLANE_NEAR] = Plane(m3);
+		planes_[FRUSTUM_PLANE_FAR] = Plane(m4 - m3);
+		planes_[FRUSTUM_PLANE_LEFT] = Plane(m4 + m1);
+		planes_[FRUSTUM_PLANE_TOP] = Plane(m4 - m2);
+		planes_[FRUSTUM_PLANE_RIGHT] = Plane(m4 - m1);
+		planes_[FRUSTUM_PLANE_BOTTOM] = Plane(m4 + m2);
 	}
 
 	const Plane& Frustum::get_plane(FrustumPlane plane_enum) const
 	{
-		return mPlanes[plane_enum];
+		return planes_[plane_enum];
 	}
 
 	template <class Object> Intersect::PlaneResult Frustum::test(const Object& object) const
@@ -35,7 +35,7 @@ namespace Math
 
 		for (uint_t plane = 0; plane < FRUSTUM_PLANE_COUNT; ++plane)
 		{
-			const Intersect::PlaneResult result = Intersect::test(mPlanes[plane], object);
+			const Intersect::PlaneResult result = Intersect::test(planes_[plane], object);
 
 			if (result == Intersect::OUTSIDE_PLANE) 
 			{

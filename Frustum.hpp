@@ -26,7 +26,7 @@ namespace Math
 		};
 
 	private:
-		Plane mPlanes[FRUSTUM_PLANE_COUNT];
+		Plane planes_[FRUSTUM_PLANE_COUNT];
 
 	public:
 		Frustum();
